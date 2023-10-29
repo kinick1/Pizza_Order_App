@@ -11,12 +11,14 @@ import kr.ac.wku.pizza_order_app.datas.StoreData
 class MainActivity : AppCompatActivity() {
 
     val mPizzaStoreList = ArrayList<StoreData>()
-    lateinit var mAdapter: StoreAdapters
+
+    lateinit var mAdapter : StoreAdapters
+
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         mPizzaStoreList.add(  StoreData("피자헛", "1588-5588", "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FnkQca%2FbtqwVT4rrZo%2FymhFqW9uRbzrmZTxUU1QC1%2Fimg.jpg")  )
         mPizzaStoreList.add(  StoreData("파파존스", "1577-8080", "http://mblogthumb2.phinf.naver.net/20160530_65/ppanppane_1464617766007O9b5u_PNG/%C6%C4%C6%C4%C1%B8%BD%BA_%C7%C7%C0%DA_%B7%CE%B0%ED_%284%29.png?type=w800")  )
@@ -27,14 +29,17 @@ class MainActivity : AppCompatActivity() {
 
         binding.pizzaStoreListView.adapter = mAdapter
 
-        binding.pizzaStoreListView.setOnItemClickListener { adapterView, view, position, l ->
-            val clickedStore= mPizzaStoreList[position]
 
-            val  myIntent=Intent(this,ViewStoreDetailActivity::class.java)
-//            clickedStore는 우리가 임의로 만든 클래스. 첨부 불가
-//            준비된 클래스에 포장해서 => (Serialize)첨부
-//             받은 입장에서는 포장을 풀어서 사용
-            myIntent.putExtra("store",clickedStore)
+        binding.pizzaStoreListView.setOnItemClickListener { adapterView, view, position, l ->
+
+            val clickedStore = mPizzaStoreList[position]
+
+            val myIntent = Intent( this, ViewStoreDetailActivity::class.java )
+
+//            clickedStore는 우리가 임의로 만든 클래스. 첨부 불가.
+//            준비 된 클래스에 포장해서 (Serializable로 포장) => 첨부,
+//            받은 입장에서는 포장을 풀어서 사용.
+            myIntent.putExtra("store", clickedStore)
 
             startActivity(myIntent)
 

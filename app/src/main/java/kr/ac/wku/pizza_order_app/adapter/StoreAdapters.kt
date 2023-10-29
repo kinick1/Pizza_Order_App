@@ -41,8 +41,8 @@ class StoreAdapters (
 
         Glide.with(mContext).load(data.logoURL).into(imgLogo)
 
-
         return row
+
 
     }
 }
