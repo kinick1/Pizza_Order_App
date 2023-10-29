@@ -1,5 +1,6 @@
 package kr.ac.wku.pizza_order_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -26,5 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.pizzaStoreListView.adapter = mAdapter
 
+        binding.pizzaStoreListView.setOnItemClickListener { adapterView, view, position, l ->
+            val clickedStore= mPizzaStoreList[position]
+
+            val  myIntent=Intent(this,ViewStoreDetailActivity::class.java)
+            startActivity(myIntent)
+        }
     }
 }
