@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         mPizzaStoreList.add(  StoreData("미스터피자", "1577-0077", "https://post-phinf.pstatic.net/MjAxODEyMDVfMzYg/MDAxNTQzOTYxOTA4NjM3.8gsStnhxz7eEc9zpt5nmSRZmI-Pzpl4NJvHYU-Dlgmcg.7Vpgk0lopJ5GoTav3CUDqmXi2-_67S5AXD0AGbbR6J4g.JPEG/IMG_1641.jpg?type=w1200")  )
         mPizzaStoreList.add(  StoreData("도미노피자", "1577-3082", "https://t1.daumcdn.net/cfile/tistory/12735E445023743122")  )
 
+        mAdapter = StoreAdapters(this, R.layout.pizza_store_list_item, mPizzaStoreList)
 
+        binding.pizzaStoreListView.adapter = mAdapter
 
     }
 }
